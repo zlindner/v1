@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const List = styled.ul`
-    position: relative;
+    position: absolute;
     top: 50%;
     right: 50px;
     transform: translateY(-50%);
@@ -26,8 +26,8 @@ const Item = styled.li`
 `;
 
 const items = [
-    { key: 'social_github', name: 'GITHUB', url: 'https://github.com/zlindner' },
-    { key: 'social_linkedin', name: 'LINKEDIN', url: 'https://linkedin.com/in/zachlindner' }
+    { key: 'social_github', name: 'GITHUB', link: 'https://github.com/zlindner' },
+    { key: 'social_linkedin', name: 'LINKEDIN', link: 'https://linkedin.com/in/zachlindner' }
 ];
 
 const Social = () => {
@@ -35,7 +35,7 @@ const Social = () => {
         <List>
             {items.map(item => (
                 <Item key={item.key}>
-                    <a href={item.url} target='_blank' rel='noopener noreferrer'>
+                    <a href={item.link} target='_blank' rel='noopener noreferrer'>
                         {item.name}
                     </a>
                 </Item>
