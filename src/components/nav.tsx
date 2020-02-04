@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const List = styled.ul`
@@ -16,52 +16,69 @@ const Item = styled.li`
         margin: 0;
     }
 
-    & > a {
+    & .line {
+        height: 3px;
+        top: 7px;
+    }
+
+    & > span {
         display: inline-block;
         position: relative;
         font-size: 14px;
         letter-spacing: 2px;
         font-weight: 600;
+        cursor: pointer;
+        user-select: none;
     }
 `;
 
-const Line = styled.div`
-    width: 100%;
-    height: 3px;
-    position: absolute;
-    top: 7px;
-    background-color: #0b0b0b;
-    transition: left 500ms;
-`;
-
-const Cover = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    background-color: #f9f9f9;
-`;
-
 const items = [
-    { key: 'nav_home', name: 'HOME', link: '#home' },
-    { key: 'nav_about', name: 'ABOUT', link: '#about' },
-    { key: 'nav_experience', name: 'EXPERIENCE', link: '#experience' },
-    { key: 'nav_projects', name: 'PROJECTS', link: '#projects' }
+    { key: 'nav_home', name: 'HOME', id: 0 },
+    { key: 'nav_about', name: 'ABOUT', id: 1 },
+    { key: 'nav_experience', name: 'EXPERIENCE', id: 2 },
+    { key: 'nav_projects', name: 'PROJECTS', id: 3 }
 ];
 
-const Nav = () => {
+type Props = {
+    anchors: React.RefObject<any>[];
+};
+
+const Nav = (props: Props) => {
     const [currentLink, setCurrentLink] = useState('HOME');
+
+    useEffect(() => {
+        const onScroll = () => {
+            const y = window.scrollY;
+
+            //console.log(y);
+
+            if (y < 350) {
+                setCurrentLink('HOME');
+            } else if (y >= 350 && y < 965) {
+                setCurrentLink('ABOUT');
+            } else if (y >= 965) {
+                setCurrentLink('EXPERIENCE');
+            }
+        };
+
+        document.addEventListener('scroll', onScroll, { capture: false, passive: true });
+    });
 
     return (
         <List>
             {items.map(item => (
-                <Item key={item.key} onClick={() => setCurrentLink(item.name)}>
-                    <a href={item.link}>
+                <Item
+                    key={item.key}
+                    onClick={() => {
+                        setCurrentLink(item.name);
+                        props.anchors[item.id].current.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                >
+                    <span>
                         {item.name}
-                        <Line style={{ left: currentLink === item.name ? '0' : '-100%' }} />
-                        <Cover />
-                    </a>
+                        <div className='line' style={{ left: currentLink === item.name ? '0' : '-100%' }} />
+                        <div className='cover' />
+                    </span>
                 </Item>
             ))}
         </List>

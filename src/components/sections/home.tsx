@@ -9,30 +9,34 @@ const Content = styled.section`
     justify-content: center;
     align-items: flex-start;
     margin: 0 auto;
+    padding: 150px 0;
+    box-sizing: border-box;
 
-    & span {
-        font-size: 20px;
+    & > h1 {
+        line-height: 1.1px;
+    }
+
+    & > div {
+        width: 100%;
+        max-width: 500px;
     }
 `;
 
-const Name = styled.h1`
-    line-height: 1.1px;
-`;
+type Props = {
+    anchor: React.RefObject<any>;
+};
 
-const Description = styled.div`
-    width: 100%;
-    max-width: 500px;
-`;
-
-const Home = () => {
+const Home = (props: Props) => {
     return (
-        <Content id='home'>
+        <Content ref={props.anchor}>
             <span>Hi, my name is</span>
-            <Name>Zach Lindner.</Name>
+            <h1>Zach Lindner.</h1>
 
-            <Description>
-                <span>I'm a software engineer focused on building natural language processing applications.</span>
-            </Description>
+            <div>
+                <span>
+                    I'm a software engineer with a passion for full-stack development and natural language processing.
+                </span>
+            </div>
         </Content>
     );
 };
