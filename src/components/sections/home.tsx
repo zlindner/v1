@@ -2,15 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Content = styled.section`
-    max-width: 800px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 0 auto;
-    padding: 150px 0;
-    box-sizing: border-box;
 
     & > h1 {
         line-height: 1.1px;

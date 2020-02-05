@@ -35,8 +35,9 @@ const Item = styled.li`
 const items = [
     { key: 'nav_home', name: 'HOME', id: 0 },
     { key: 'nav_about', name: 'ABOUT', id: 1 },
-    { key: 'nav_experience', name: 'EXPERIENCE', id: 2 },
-    { key: 'nav_projects', name: 'PROJECTS', id: 3 }
+    { key: 'nav_skills', name: 'SKILLS', id: 2 },
+    { key: 'nav_experience', name: 'EXPERIENCE', id: 3 },
+    { key: 'nav_projects', name: 'PROJECTS', id: 4 }
 ];
 
 type Props = {
@@ -57,7 +58,7 @@ const Nav = (props: Props) => {
             } else if (y >= 350 && y < 965) {
                 setCurrentLink('ABOUT');
             } else if (y >= 965) {
-                setCurrentLink('EXPERIENCE');
+                setCurrentLink('SKILLS');
             }
         };
 

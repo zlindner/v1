@@ -4,12 +4,11 @@ import { createGlobalStyle } from 'styled-components';
 
 import Home from './components/sections/home';
 import About from './components/sections/about';
+import Skills from './components/sections/skills';
 import Experience from './components/sections/experience';
 import Projects from './components/sections/projects';
 import Nav from './components/nav';
 import Social from './components/social';
-
-// For SF, use Text for text that's smaller than 20 points; use Display for text that's 20 points or larger.
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -102,6 +101,7 @@ const GlobalStyle = createGlobalStyle`
 
 const homeAnchor = createRef();
 const aboutAnchor = createRef();
+const skillsAnchor = createRef();
 const experienceAnchor = createRef();
 const projectsAnchor = createRef();
 
@@ -113,6 +113,7 @@ render(
 
         <Home anchor={homeAnchor} />
         <About anchor={aboutAnchor} />
+        <Skills anchor={skillsAnchor} />
         <Experience anchor={experienceAnchor} />
         <Projects anchor={projectsAnchor} />
 
