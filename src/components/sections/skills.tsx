@@ -24,6 +24,11 @@ const Skill = styled.li`
     & > img {
         width: 100px;
         height: 100px;
+        transition: filter 300ms;
+    }
+
+    & > img:hover {
+        filter: invert(1);
     }
 `;
 

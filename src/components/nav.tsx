@@ -21,6 +21,11 @@ const Item = styled.li`
         top: 7px;
     }
 
+    & .strike::after {
+        height: 3px;
+        top: 7px;
+    }
+
     & > span {
         display: inline-block;
         position: relative;
@@ -76,9 +81,8 @@ const Nav = (props: Props) => {
                     }}
                 >
                     <span>
+                        <div className={currentLink === item.name ? 'strike struck' : 'strike'} />
                         {item.name}
-                        <div className='line' style={{ left: currentLink === item.name ? '0' : '-100%' }} />
-                        <div className='cover' />
                     </span>
                 </Item>
             ))}

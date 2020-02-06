@@ -92,20 +92,27 @@ const GlobalStyle = createGlobalStyle`
         list-style-type: none;
     }
 
-    .line {
-        width: 100%;
-        position: absolute;
-        background-color: #0b0b0b;
-        transition: left 500ms;
+    @keyframes strike {
+        0%   { width : 0; }
+        100% { width: 100%; }
+      }
+
+    .strike {
+        position: relative;
     }
 
-    .cover {
-        width: 100%;
-        height: 100%;
+    .strike::after {
+        content: ' ';
         position: absolute;
-        top: 0;
-        left: -100%;
-        background-color: #f9f9f9;
+        left: 0;
+        background: #0b0b0b;
+        width: 0;
+    }
+
+    .struck::after {
+        width: 100%;
+        animation-name: strike;
+        animation-duration: 500ms;
     }
 `;
 
