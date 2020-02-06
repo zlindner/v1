@@ -54,9 +54,8 @@ const Skills = (props: Props) => {
     return (
         <Content ref={props.anchor}>
             <h3>
+                <div className={visible ? 'strike struck' : 'strike'} />
                 SKILLS
-                <div className='line' style={{ left: visible ? '0' : '-100%' }} />
-                <div className='cover' />
             </h3>
 
             {/* make this div a grid, allow multiple categories per row */}

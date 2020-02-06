@@ -102,11 +102,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .strike::after {
-        content: ' ';
-        position: absolute;
-        left: 0;
-        background: #0b0b0b;
         width: 0;
+        height: 7px;
+        position: absolute;
+        top: 16px;
+        left: 0;
+        content: ' ';
+        background: #0b0b0b;
     }
 
     .struck::after {

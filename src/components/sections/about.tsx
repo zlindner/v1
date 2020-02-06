@@ -42,9 +42,8 @@ const About = (props: Props) => {
     return (
         <Content ref={props.anchor}>
             <h3>
+                <div className={visible ? 'strike struck' : 'strike'} />
                 ABOUT
-                <div className='line' style={{ left: visible ? '0' : '-100%' }} />
-                <div className='cover' />
             </h3>
 
             <div>
