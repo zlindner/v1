@@ -1,48 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Content = styled.section``;
-
-const Categories = styled.ul`
-    & li {
-        float: left;
-        margin-right: 40px;
+const Content = styled.section`
+    & > div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
+`;
 
-    & li:last-child {
-        margin: 0;
-    }
+const List = styled.ul`
+    width: 360px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 30px;
+`;
 
-    & span {
-        display: inline-block;
-        position: relative;
-        font-size: 18px;
-        letter-spacing: 2px;
-        font-weight: 600;
-        cursor: pointer;
-        user-select: none;
-    }
+const Skill = styled.li`
+    display: block;
+    width: 100px;
+    height: 100px;
 
-    & .line {
-        height: 5px;
-        top: 9px;
-        z-index: -2;
-    }
-
-    & .cover {
-        z-index: -1;
+    & > img {
+        width: 100px;
+        height: 100px;
     }
 `;
 
 type Props = {
     anchor: React.RefObject<any>;
 };
-
-const categories = [
-    { key: 'category_languages', name: 'LANGUAGES' },
-    { key: 'category_frontend', name: 'FRONTEND' },
-    { key: 'category_backend', name: 'BACKEND' }
-];
 
 const Skills = (props: Props) => {
     const [visible, setVisible] = useState(false);
@@ -67,17 +54,34 @@ const Skills = (props: Props) => {
                 <div className='cover' />
             </h3>
 
-            <Categories>
-                {categories.map(category => (
-                    <li key={category.key}>
-                        <span>
-                            {category.name}
-                            <div className='line' style={{ left: visible ? '0' : '-100%' }} />
-                            <div className='cover' />
-                        </span>
-                    </li>
-                ))}
-            </Categories>
+            {/* make this div a grid, allow multiple categories per row */}
+            <div>
+                <h4>LANGUAGES</h4>
+
+                <List>
+                    <Skill>
+                        <img src={require('../../assets/python.svg')} />
+                    </Skill>
+                </List>
+
+                <h4>MACHINE LEARNING</h4>
+
+                <List>
+                    <Skill>
+                        <img src={require('../../assets/tensorflow.svg')} />
+                    </Skill>
+                    <Skill>
+                        <img src={require('../../assets/keras.svg')} />
+                    </Skill>
+                    <Skill>
+                        <img src={require('../../assets/scikit-learn.svg')} />
+                    </Skill>
+                </List>
+
+                <h4>FRONTEND</h4>
+
+                <h4>BACKEND</h4>
+            </div>
         </Content>
     );
 };

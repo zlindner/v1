@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const List = styled.ul`
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: 50px;
     transform: translateY(-50%);

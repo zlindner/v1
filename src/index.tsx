@@ -61,6 +61,16 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 600;
     }
 
+    h4 {
+        display: inline-block;
+        position: relative;
+        font-size: 24px;
+        font-family: 'SF Pro Text';
+        color: #3f3f40;
+        letter-spacing: 3px;
+        font-weight: 400;
+    }
+
     span {
         color: #3f3f40;
     }
