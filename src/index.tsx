@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'SF Pro Text';
         font-size: 20px;
         background-color: #f9f9f9;
+        color: #3f3f40;
     }
 
     section {
