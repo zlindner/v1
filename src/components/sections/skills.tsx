@@ -31,14 +31,23 @@ const Grid = styled.div`
     width: calc(100% - 300px);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 30px;
-    position: absolute;
-    left: 0;
+    gap: 40px;
+    row-gap: 50px;
 `;
 
-const Skill = styled.img`
+const Skill = styled.div`
     width: 100px;
     height: 100px;
+    text-align: center;
+
+    & > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    & > span {
+        font-size: 14px;
+    }
 `;
 
 type Props = {
@@ -56,7 +65,7 @@ const categories = [
     },
     {
         name: 'frontend',
-        skills: ['react', 'redux', 'nodejs', 'jest']
+        skills: ['react', 'redux', 'nodejs', 'jest', 'javafx']
     },
     {
         name: 'backend',
@@ -80,8 +89,6 @@ const Skills = (props: Props) => {
         document.addEventListener('scroll', onScroll, { capture: false, passive: true });
     });
 
-    const currentCategory = categories.find(category => category.name === current);
-
     return (
         <Content ref={props.anchor}>
             <h3>
@@ -99,9 +106,14 @@ const Skills = (props: Props) => {
             </Categories>
 
             <Grid>
-                {currentCategory!.skills.map(skill => (
-                    <Skill src={require('../../assets/' + skill + '.svg')} alt='' />
-                ))}
+                {categories
+                    .find(category => category.name === current)!
+                    .skills.map(skill => (
+                        <Skill>
+                            <img src={require('../../assets/' + skill + '.svg')} alt='' />
+                            <span>{skill.toUpperCase()}</span>
+                        </Skill>
+                    ))}
             </Grid>
         </Content>
     );

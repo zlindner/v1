@@ -40,11 +40,6 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    section .line {
-        height: 7px;
-        top: 15px;
-    }
-
     h1 {
         font-size: 80px;
         font-family: 'SF Pro Text';
@@ -125,7 +120,7 @@ const skillsAnchor = createRef();
 const experienceAnchor = createRef();
 const projectsAnchor = createRef();
 
-const anchors = [homeAnchor, aboutAnchor, experienceAnchor, projectsAnchor];
+const anchors = [homeAnchor, aboutAnchor, skillsAnchor, experienceAnchor, projectsAnchor];
 
 render(
     <div style={{ width: '100vw', height: '100vh' }}>

@@ -58,6 +58,7 @@ const Nav = (props: Props) => {
 
             //console.log(y);
 
+            // FIXME
             if (y < 350) {
                 setCurrentLink('HOME');
             } else if (y >= 350 && y < 965) {
