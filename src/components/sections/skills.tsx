@@ -28,7 +28,7 @@ const Categories = styled.ul`
 `;
 
 const Grid = styled.div`
-    width: calc(100% - 180px);
+    width: calc(100% - 300px);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 30px;
@@ -48,7 +48,7 @@ type Props = {
 const categories = [
     {
         name: 'languages',
-        skills: ['python', 'c', 'java', 'typescript']
+        skills: ['python', 'c', 'java', 'javascript', 'typescript']
     },
     {
         name: 'machine learning',
@@ -56,11 +56,11 @@ const categories = [
     },
     {
         name: 'frontend',
-        skills: ['react']
+        skills: ['react', 'redux', 'nodejs', 'jest']
     },
     {
         name: 'backend',
-        skills: []
+        skills: ['mysql', 'postgresql', 'flask', 'redis']
     }
 ];
 
