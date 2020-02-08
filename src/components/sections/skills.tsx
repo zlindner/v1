@@ -70,6 +70,14 @@ const categories = [
     {
         name: 'backend',
         skills: ['mysql', 'postgresql', 'flask', 'redis']
+    },
+    {
+        name: 'build/deploy',
+        skills: ['docker', 'aws', 'heroku', 'webpack', 'babel']
+    },
+    {
+        name: 'other',
+        skills: ['git', 'linux', 'macos', 'windows']
     }
 ];
 

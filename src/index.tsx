@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 20px;
         background-color: #f9f9f9;
         color: #3f3f40;
+        user-select: none;
     }
 
     section {
@@ -64,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'SF Pro Text';
         color: #3f3f40;
         letter-spacing: 3px;
-        font-weight: 400;
+        font-weight: 600;
     }
 
     span {
@@ -75,7 +76,6 @@ const GlobalStyle = createGlobalStyle`
         color: #3f3f40;
         text-decoration: none;
         outline: none;
-        user-select: none;
     }
 
     a:visited {
@@ -122,18 +122,31 @@ const projectsAnchor = createRef();
 
 const anchors = [homeAnchor, aboutAnchor, skillsAnchor, experienceAnchor, projectsAnchor];
 
-render(
-    <div style={{ width: '100vw', height: '100vh' }}>
-        <GlobalStyle />
+const App = () => {
+    const [scrollY, setScrollY] = useState(window.scrollY);
 
-        <Home anchor={homeAnchor} />
-        <About anchor={aboutAnchor} />
-        <Skills anchor={skillsAnchor} />
-        <Experience anchor={experienceAnchor} />
-        <Projects anchor={projectsAnchor} />
+    useEffect(() => {
+        const onScroll = () => {
+            setScrollY(window.scrollY);
+        };
 
-        <Nav anchors={anchors} />
-        <Social />
-    </div>,
-    document.getElementById('root')
-);
+        document.addEventListener('scroll', onScroll, { capture: false, passive: true });
+    });
+
+    return (
+        <div style={{ width: '100vw', height: '100vh' }}>
+            <GlobalStyle />
+
+            <Home anchor={homeAnchor} />
+            <About anchor={aboutAnchor} scrollY={scrollY} />
+            <Skills anchor={skillsAnchor} />
+            <Experience anchor={experienceAnchor} />
+            <Projects anchor={projectsAnchor} />
+
+            <Nav anchors={anchors} scrollY={scrollY} />
+            <Social />
+        </div>
+    );
+};
+
+render(<App />, document.getElementById('root'));

@@ -47,29 +47,24 @@ const items = [
 
 type Props = {
     anchors: React.RefObject<any>[];
+    scrollY: number;
 };
 
 const Nav = (props: Props) => {
     const [currentLink, setCurrentLink] = useState('HOME');
 
     useEffect(() => {
-        const onScroll = () => {
-            const y = window.scrollY;
+        const y = props.scrollY;
 
-            //console.log(y);
-
-            // FIXME
-            if (y < 350) {
-                setCurrentLink('HOME');
-            } else if (y >= 350 && y < 965) {
-                setCurrentLink('ABOUT');
-            } else if (y >= 965) {
-                setCurrentLink('SKILLS');
-            }
-        };
-
-        document.addEventListener('scroll', onScroll, { capture: false, passive: true });
-    });
+        // FIXME
+        if (y < 350) {
+            setCurrentLink('HOME');
+        } else if (y >= 350 && y < 965) {
+            setCurrentLink('ABOUT');
+        } else if (y >= 965) {
+            setCurrentLink('SKILLS');
+        }
+    }, [props.scrollY]);
 
     return (
         <List>

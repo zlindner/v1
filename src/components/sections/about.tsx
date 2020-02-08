@@ -22,22 +22,17 @@ const Image = styled.div`
 
 type Props = {
     anchor: React.RefObject<any>;
+    scrollY: number;
 };
 
 const About = (props: Props) => {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => {
-            if (window.scrollY >= 350) {
-                setVisible(true);
-
-                document.removeEventListener('scroll', onScroll);
-            }
-        };
-
-        document.addEventListener('scroll', onScroll, { capture: false, passive: true });
-    });
+        if (!visible && props.scrollY >= 350) {
+            setVisible(true);
+        }
+    }, [visible, props.scrollY]);
 
     return (
         <Content ref={props.anchor}>
@@ -50,14 +45,14 @@ const About = (props: Props) => {
                 <Description>
                     <p>Hi I'm Zach, a 4th year computer science student at the University of Guelph.</p>
                     <p>
-                        I am focused on learning about the state of the art in natural language processing (NLP), as
-                        well as the surrounding data pipelines and backend architectures. I am applying what I've
-                        learned to build NLP web applications with React, Typescript, and TensorFlow.
+                        I am focused on learning about the state of the art in natural language processing (NLP), the
+                        surrounding data pipelines, and backend architectures. I am applying what I've learned to build
+                        NLP web applications with React, Typescript, and TensorFlow.
                     </p>
                 </Description>
 
                 <Image>
-                    <img />
+                    <img alt='' />
                 </Image>
             </div>
         </Content>
