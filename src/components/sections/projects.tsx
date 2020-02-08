@@ -3,13 +3,7 @@ import styled from 'styled-components';
 
 const Content = styled.section``;
 
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 15px;
-    position: relative;
-`;
-
+// TODO cleanup css
 const Project = styled.div`
     display: grid;
     gap: 10px;
@@ -92,7 +86,6 @@ type Props = {
 
 const mainProjects = [
     {
-        key: 'project_sopview',
         name: 'sopview',
         description:
             'A web app that allows medical device companies to automate part of their Standard Operating Procedure (SOP) auditing process.',
@@ -100,7 +93,6 @@ const mainProjects = [
         tech: ['typescript', 'react', 'redux', 'flask', 'tensorflow', 'postgresql']
     },
     {
-        key: 'project_pripol',
         name: 'pripol',
         description:
             'Privacy policy coverage analysis using deep neural networks. Awarded "Best Computer Science Poster" at the 2019 CEPS Undergraduate Poster Session.',
@@ -121,13 +113,13 @@ const Projects = (props: Props) => {
 
             <div>
                 {mainProjects.map(project => (
-                    <Project>
+                    <Project key={`project_${project.name}`}>
                         <div>
                             <h4>{project.name.toUpperCase()}</h4>
                             <p>{project.description}</p>
                             <ul>
                                 {project.tech.map(tech => (
-                                    <li>{tech.toUpperCase()}</li>
+                                    <li key={`tech_${tech}`}>{tech.toUpperCase()}</li>
                                 ))}
                             </ul>
                         </div>

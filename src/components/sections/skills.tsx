@@ -106,7 +106,7 @@ const Skills = (props: Props) => {
 
             <Categories>
                 {categories.map(category => (
-                    <li onClick={() => setCurrent(category.name)}>
+                    <li key={`category_${category.name}`} onClick={() => setCurrent(category.name)}>
                         <div className={current === category.name ? 'strike struck' : 'strike'} />
                         <span>{category.name.toUpperCase()}</span>
                     </li>
@@ -117,7 +117,7 @@ const Skills = (props: Props) => {
                 {categories
                     .find(category => category.name === current)!
                     .skills.map(skill => (
-                        <Skill>
+                        <Skill key={`skill_${skill}`}>
                             <img src={require('../../assets/' + skill + '.svg')} alt='' />
                             <span>{skill.toUpperCase()}</span>
                         </Skill>
