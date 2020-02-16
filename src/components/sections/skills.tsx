@@ -39,7 +39,7 @@ const Skill = styled.div`
     width: 100px;
     height: 100px;
     text-align: center;
-    transition: 300ms ease-in-out;
+    transition: 200ms;
 
     &:hover {
         box-shadow: rgba(2, 12, 27, 0.7) 0px 10px 30px -15px;
