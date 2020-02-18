@@ -31,7 +31,7 @@ const Grid = styled.div`
     width: calc(100% - 300px);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 40px;
+    column-gap: 40px;
     row-gap: 50px;
 `;
 
